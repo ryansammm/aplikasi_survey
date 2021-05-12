@@ -3,11 +3,11 @@
 namespace App\Calendar\Controller;
 
 use App\Calendar\Model\LeapYear;
-use Core\GLobalFunc;
+use Core\GlobalFunc;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class LeapYearController extends GLobalFunc
+class LeapYearController extends GlobalFunc
 {
     public function index(Request $request, $year)
     {
@@ -21,7 +21,6 @@ class LeapYearController extends GLobalFunc
 		// ** untuk penggunaan response cache **
 		//$response->setTtl(10);
 
-
 		return $response;
     }
 
@@ -31,7 +30,6 @@ class LeapYearController extends GLobalFunc
 
 		$nama_pegawai = "Deden";
 
-        $response = $this->render_template($request, [$nama_pegawai]);
-		return $response;
+        return $this->render_template('subs/hello', [$nama_pegawai]);
 	}
 }

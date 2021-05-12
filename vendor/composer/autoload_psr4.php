@@ -20,5 +20,7 @@ return array(
     'Symfony\\Component\\ErrorHandler\\' => array($vendorDir . '/symfony/error-handler'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\EventDispatcher\\' => array($vendorDir . '/psr/event-dispatcher/src'),
+    'Config\\' => array($baseDir . '/config'),
+    'App\\' => array($baseDir . '/src/app'),
     '' => array($baseDir . '/src'),
 );

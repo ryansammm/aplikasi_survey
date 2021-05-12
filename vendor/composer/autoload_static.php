@@ -36,6 +36,14 @@ class ComposerStaticInit51efdfa0631ff034e7d96d13e2bb998a
             'Psr\\Log\\' => 8,
             'Psr\\EventDispatcher\\' => 20,
         ),
+        'C' => 
+        array (
+            'Config\\' => 7,
+        ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -94,6 +102,14 @@ class ComposerStaticInit51efdfa0631ff034e7d96d13e2bb998a
         'Psr\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/event-dispatcher/src',
+        ),
+        'Config\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/config',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/app',
         ),
     );
 
