@@ -30,6 +30,6 @@ class LeapYearController extends GlobalFunc
 
 		$nama_pegawai = "Deden";
 
-        return $this->render_template('subs/hello', [$nama_pegawai]);
+        return $this->render_template('subs/hello', $request, ['nama_pegawai' => $nama_pegawai]);
 	}
 }

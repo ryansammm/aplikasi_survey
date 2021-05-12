@@ -5,22 +5,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 $routes = new Routing\RouteCollection();
-//$routes->add('hello', new Routing\Route('/hello/{name}', ['name' => 'World']));
-// $routes->add('hello', new Routing\Route('/hello/{name}', [
-//     'name' => 'World',
-//     '_controller' => function ($request) {
-//         // $foo will be available in the template
-//         $request->attributes->set('foo', 'bar');
 
-//         $response = render_template($request);
+// ############################  !!DO NOT EDIT!! ############################ 
+$routes->add('assets', new Routing\Route('/assets/{path}.{_format}', [
+    '_controller' => 'Core\GlobalFunc::assets'
+], [
+    'path' => '[^.]+'
+]));
+// ############################  ------------ ############################ 
 
-//         // change some header
-//         $response->headers->set('Content-Type', 'text/plain');
 
-//         return $response;
-//     }
-// ]));
-//$routes->add('bye', new Routing\Route('/bye'));
+// ROUTE APPLICATION START BELOW!!! 
+
 $routes->add('leap_year', new Routing\Route('/is_leap_year/{year}', [
     'year' => null,
     '_controller' => 'App\Calendar\Controller\LeapYearController::index',
