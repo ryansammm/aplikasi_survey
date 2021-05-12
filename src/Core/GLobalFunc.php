@@ -18,7 +18,7 @@ class GlobalFunc
         $this->baseUrl = 'http://crt-framework.com/';
     }
 
-    public function render_template($page, $request, $data = [])
+    public function render_template($page, $data = [], $request = null)
     {
         if (!is_null($request)) {
             extract($request->attributes->all(), EXTR_SKIP);
@@ -47,6 +47,7 @@ class GlobalFunc
             $response->headers->set('Content-Type', 'text/plain');
             return $response;
         }
+
         ob_start();
         include $pathFile;
 
