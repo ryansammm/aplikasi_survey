@@ -2,12 +2,15 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+use App\Auth\Controller\AuthController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver;
 use Symfony\Component\HttpKernel\Controller\ControllerResolver;
 use Symfony\Component\Routing;
 use Symfony\Component\HttpKernel;
+
+// $auth = new AuthController();
 
 $request = Request::createFromGlobals();
 $routes = include __DIR__.'/../src/routes.php';

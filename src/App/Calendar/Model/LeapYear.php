@@ -10,6 +10,9 @@ class LeapYear
             $year = date('Y');
         }
 
-        return 0 == $year % 400 || (0 == $year % 4 && 0 != $year % 100);
+        $result = 0 == $year % 400 || (0 == $year % 4 && 0 != $year % 100);
+
+        return $result ? "This is leap year" : "This is not a leap year";
     }
+
 }

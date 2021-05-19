@@ -5,17 +5,25 @@ namespace Core;
 use Config\Database;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class GlobalFunc
 {
     public $conn;
     public $baseUrl;
+    public $session;
 
     public function __construct()
     {
         $db = new Database();
         $this->conn = $db->conn;
         $this->baseUrl = 'http://crt-framework.com/';
+    }
+
+    public function beginSession()
+    {
+        $this->session = new Session();
+        $this->session->start();
     }
 
     public function render_template($page, $data = [], $request = null)

@@ -26,8 +26,11 @@ class LeapYearController extends GlobalFunc
 
 	public function testing(Request $request)
 	{
+		$id = $request->attributes->get('id');
 		$nama_pegawai = "Deden";
+		$leapYear = new LeapYear;
+		$data = $leapYear->isLeapYear("2021");
 
-        return $this->render_template('subs/hello', $request, ['nama_pegawai' => $nama_pegawai]);
+        return $this->render_template('subs/hello', ['nama_pegawai' => $nama_pegawai, 'data_bebas' => $data, 'id' => $id]);
 	}
 }

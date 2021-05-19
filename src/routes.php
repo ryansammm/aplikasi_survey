@@ -1,7 +1,7 @@
 <?php
 
 use Symfony\Component\Routing;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Core\GlobalFunc;
 
@@ -20,21 +20,27 @@ $routes->add('assets', new Routing\Route('/assets/{path}.{_format}', [
 // ROUTE APPLICATION START BELOW!!! 
 // --------------------------------
 
-$routes->add('welcome', new Routing\Route('/', [
+$routes->add('welcome', new Route('/', [
     '_controller' => function(Request $request) {
         global $app;
 
         return $app->render_template('welcome');
-    },
+    }
 ]));
 
-$routes->add('leap_year', new Routing\Route('/is_leap_year/{year}', [
-    'year' => null,
-    '_controller' => 'App\Calendar\Controller\LeapYearController::index',
-]));
-
-$routes->add('hello', new Routing\Route('/hellos/get', [
+$routes->add('hello', new Route('/hellos/get/{id}', [
     '_controller' => 'App\Calendar\Controller\LeapYearController::testing',
+]));
+
+
+// CRUD Bank
+
+$routes->add('bank', new Route('/bank', [
+    '_controller' => 'App\Bank\Controller\BankController::index',
+]));
+
+$routes->add('bankEdit', new Route('/bank/edit/{id}', [
+    '_controller' => 'App\Bank\Controller\BankController::edit'
 ]));
 
 return $routes;
