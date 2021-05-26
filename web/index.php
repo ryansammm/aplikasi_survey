@@ -32,5 +32,5 @@ $response = $framework->handle($request);
 
 $response->send();
 
-// ============== For installation only ==============
+// ============== For installation only =============
 // symlink("/home/sinovatif/public_html/goals/src/assets", "/home/sinovatif/public_html/goals/web/assets");
