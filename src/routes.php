@@ -1,21 +1,13 @@
 <?php
 
 use Symfony\Component\Routing;
+use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Core\GlobalFunc;
 
-$routes = new Routing\RouteCollection();
+$routes = new RouteCollection();
 $app = new GlobalFunc;
-
-// ############################  !!DO NOT EDIT!! ############################ 
-$routes->add('assets', new Routing\Route('/assets/{path}.{_format}', [
-    '_controller' => 'Core\GlobalFunc::assets'
-], [
-    'path' => '[^.]+'
-]));
-// ############################  ------------ ############################ 
-
 
 // ROUTE APPLICATION START BELOW!!! 
 // --------------------------------
