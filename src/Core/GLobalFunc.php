@@ -44,36 +44,11 @@ class GlobalFunc
         return new Response(ob_get_clean());
     }
 
-    public function assets(Request $request)
+    public function dd(...$vars)
     {
-        $extension = $request->attributes->get('_format');
-        $file = $request->attributes->get('path').'.'.$extension;
-        $pathFile = __DIR__.'/../../src/assets/'.$file;
-        
-        if (!file_exists($pathFile)) {
-            $response = new Response("File Not Found!");
-            $response->headers->set('Content-Type', 'text/plain');
-            return $response;
+        foreach ($vars as $key => $value) {
+            var_dump($value);
         }
-
-        ob_start();
-        include $pathFile;
-
-        $response = new Response(ob_get_clean());
-
-        $content_type = '';
-        if ($extension == 'css') {
-            $content_type = 'text/css';
-        } else if ($extension == 'js') {
-            $content_type = 'text/script';
-        }
-
-        $response->headers->set('Content-Type', $content_type);
-        return $response;
-    }
-
-    public function esc_str($conn, $data)
-    {
-        return pg_escape_string($conn, $data);
+        die();
     }
 }
