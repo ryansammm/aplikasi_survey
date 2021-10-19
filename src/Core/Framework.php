@@ -24,10 +24,15 @@ class Framework extends HttpKernel implements HttpKernelInterface
         $this->argumentResolver = $argumentResolver;
     }
 
-    public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST,
-        $catch = true)
-    {
+    public function handle(
+        Request $request,
+        $type = HttpKernelInterface::MASTER_REQUEST,
+        $catch = true
+    ) {
         $this->matcher->getContext()->fromRequest($request);
+
+        $urlTujuan = $request->getPathInfo();
+        $GLOBALS['url'] = $urlTujuan;
 
         try {
             $request->attributes->add($this->matcher->match($request->getPathInfo()));
@@ -39,7 +44,7 @@ class Framework extends HttpKernel implements HttpKernelInterface
         } catch (ResourceNotFoundException $exception) {
             return new Response('Not Found', 404);
         } catch (\Exception $exception) {
-            return new Response(''.$exception, 500);
+            return new Response('' . $exception, 500);
         }
     }
 }

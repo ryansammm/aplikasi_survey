@@ -37,4 +37,43 @@ $routes->add('dahsboard', new Route('/dashboard', [
 ]));
 
 
+$routes->add('dataAlumni', new Route('/data-alumni', [
+    '_controller' => function (Request $request) {
+        global $app;
+
+        return $app->render_template('admin/data-alumni/index');
+    }
+]));
+
+
+
+
+
+
+// Mahasiswa
+$routes->add('survey', new Route('/survey', [
+    '_controller' => function (Request $request) {
+        global $app;
+
+        return $app->render_template('mhs/survey/index');
+    }
+]));
+
+
+$routes->add('infografis', new Route('/infografis', [
+    '_controller' => function (Request $request) {
+        global $app;
+
+        return $app->render_template('mhs/infografis/index');
+    }
+]));
+
+$routes->add('detailInfografis', new Route('/detail-infografis', [
+    '_controller' => function (Request $request) {
+        global $app;
+
+        return $app->render_template('mhs/detail-infografis/index');
+    }
+]));
+
 return $routes;
