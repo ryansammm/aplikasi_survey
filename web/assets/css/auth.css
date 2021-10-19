@@ -1,0 +1,38 @@
+body {
+  background-color: #fff;
+}
+#auth {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+#auth #auth-right {
+  background: url(https://source.unsplash.com/mF6gB6hV5OU),
+    linear-gradient(90deg, #2d499d, #3f5491);
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+#auth #auth-left {
+  padding: 2rem 8rem;
+}
+#auth #auth-left .auth-title {
+  font-size: 28pt;
+  margin-bottom: 1rem;
+}
+#auth #auth-left .auth-subtitle {
+  color: #a8aebb;
+  font-size: 12pt;
+  /* line-height: 2.5rem; */
+}
+#auth #auth-left .auth-logo {
+  margin-bottom: 4rem;
+}
+#auth #auth-left .auth-logo img {
+  height: 3.3rem;
+}
+@media screen and (max-width: 767px) {
+  #auth #auth-left {
+    padding: 5rem;
+  }
+}
