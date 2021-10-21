@@ -8,15 +8,16 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
 
-    <link rel="stylesheet" href="assets/vendors/chartjs/Chart.min.css">
-    <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css">
+    <link rel="stylesheet" href="/assets/vendors/chartjs/Chart.min.css">
+    <link rel="stylesheet" href="/assets/vendors/simple-datatables/style.css">
 
-    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
 </head>
 
 <body>
@@ -26,7 +27,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                            <a href="index.html"><img src="/assets/images/logo/logo.png" alt="Logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -43,10 +44,10 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="sidebar-item <?= strpos($GLOBALS['url'], '/data-alumni')  !== false ? 'active' : ''; ?> ">
-                            <a href="/data-alumni" class='sidebar-link'>
+                        <li class="sidebar-item <?= strpos($GLOBALS['url'], '/data-mahasiswa')  !== false ? 'active' : ''; ?> ">
+                            <a href="/data-mahasiswa" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
-                                <span>Basis Data Alumni</span>
+                                <span>Basis Data Mahasiswa</span>
                             </a>
                         </li>
                         <li class="sidebar-item <?= strpos($GLOBALS['url'], '/result-survey')  !== false ? 'active' : ''; ?>">
@@ -56,13 +57,13 @@
                             </a>
                         </li>
                         <li class="sidebar-item <?= strpos($GLOBALS['url'], '/master-survey')  !== false ? 'active' : ''; ?>">
-                            <a href="master-survey" class='sidebar-link'>
+                            <a href="/master-survey" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Master Survey</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="index.html" class='sidebar-link'>
+                            <a href="/admin/logout" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Logout</span>
                             </a>

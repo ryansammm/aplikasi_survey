@@ -19,7 +19,7 @@
                             <h3 class="mb-15">Tahun 2019</h3>
                         </div>
                         <div class="pricing-button">
-                            <a class="button" href="/detail-infografis">Selengkapnya</a>
+                            <a class="button" href="/infografis/detail">Selengkapnya</a>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                             <h3 class="mb-15">Tahun 2020</h3>
                         </div>
                         <div class="pricing-button">
-                            <a class="button" href="/detail-infografis">Selengkapnya</a>
+                            <a class="button" href="/infografis/detail">Selengkapnya</a>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                             <h3 class="mb-15">Tahun 2021</h3>
                         </div>
                         <div class="pricing-button">
-                            <a class="button" href="/detail-infografis">Selengkapnya</a>
+                            <a class="button" href="/infografis/detail">Selengkapnya</a>
                         </div>
                     </div>
                 </div>

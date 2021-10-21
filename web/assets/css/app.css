@@ -1498,3 +1498,10 @@ a {
 .icon-mid:before {
   vertical-align: middle;
 }
+
+.btn-group-sm > .btn,
+.btn-sm {
+  border-radius: 0.2rem;
+  font-size: 10pt !important;
+  padding: 0.1rem 0.3rem !important;
+}

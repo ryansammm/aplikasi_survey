@@ -11,27 +11,27 @@
     <title>Survey Tracer Study</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="shortcut icon" href="/images/favicon.ico" />
 
     <!-- font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,500,500i,600,700,800,900|Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">
 
     <!-- Plugins -->
-    <link rel="stylesheet" type="text/css" href="assets/mhs/css/plugins-css.css" />
-    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/mhs/css/plugins-css.css" />
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- Typography -->
-    <link rel="stylesheet" type="text/css" href="assets/mhs/css/typography.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/mhs/css/typography.css" />
 
     <!-- Shortcodes -->
-    <link rel="stylesheet" type="text/css" href="assets/mhs/css/shortcodes/shortcodes.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/mhs/css/shortcodes/shortcodes.css" />
 
     <!-- Style -->
-    <link rel="stylesheet" type="text/css" href="assets/mhs/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/mhs/css/style.css" />
 
     <!-- Responsive -->
-    <link rel="stylesheet" type="text/css" href="assets/mhs/css/responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/mhs/css/responsive.css" />
 
 </head>
 
@@ -44,7 +44,7 @@
  preloader -->
 
         <div id="pre-loader">
-            <img src="assets/mhs/images/pre-loader/loader-01.svg" alt="">
+            <img src="/assets/mhs/images/pre-loader/loader-01.svg" alt="">
         </div>
 
         <!--=================================
@@ -68,7 +68,7 @@
                         <!-- menu logo -->
                         <ul class="menu-logo">
                             <li>
-                                <a href="index-01.html"><img id="logo_img" src="assets/mhs/images/logo.png" alt="Politkenik_AKA"> </a>
+                                <a href="index-01.html"><img id="logo_img" src="/assets/mhs/images/logo.png" alt="Politkenik_AKA"> </a>
                             </li>
                         </ul>
                         <!-- menu links -->
