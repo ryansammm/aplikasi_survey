@@ -49,7 +49,7 @@
                             <div class="col-sm-12">
                                 <!-- <div id="formmessage">Success/Error Message Goes Here</div> -->
                                 <form role="form" method="post" action="/kuesioner/store">
-                                    <h4 class="mb-20">A. Bidata Responden</h4>
+                                    <h4 class="mb-20">A. Biodata Responden</h4>
                                     <div class="row mb-3">
                                         <div class="col-4">
                                             <label for="name">Email Address</label>
@@ -154,8 +154,8 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b3" value="7" id="flexRadioDefault7">
-                                                <div class="col-4">
-                                                    <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b3Lainnya">
+                                                <div class="col-4" style="padding-left:0px !important">
+                                                    <input id="name" type="text" placeholder="Lainnya.." class="form-lainnya" name="b3Lainnya">
                                                 </div>
                                             </div>
                                         </div>
@@ -250,7 +250,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b5" value="10" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b5Lainnya">
                                                 </div>
                                             </div>
@@ -269,6 +269,7 @@
                                             <div class="form-group">
                                                 <label for="name">B7. Sejak kapan Anda bekerja di tempat sekarang? </label>
                                                 <input type='text' name="b7" class="form-control datetimepicker" id='datetimepicker4' />
+                                                <p class="note">* Format pengisian Bulan/Tanggal/Tahun (contoh untuk penulisan 28 Februari 2015 = 02/28/2015) , data yang kami ambil adalah Bulan dan Tahun, tanggal dapat diisi tgl 01 jika tidak ingat tepat </p>
                                             </div>
                                         </div>
                                     </div>
@@ -308,7 +309,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b8" value="6" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b8Lainnya">
                                                 </div>
                                             </div>
@@ -320,8 +321,9 @@
                                             <div class="form-group">
                                                 <label for="name">B9. Sebutkan tugas/pekerjaan utama yang Anda lakukan saat ini secara spesifik ?</label>
                                                 <div class="section-field textarea">
-                                                    <textarea class="form-control input-message" placeholder="Comment*" rows="7" name="b9"></textarea>
+                                                    <textarea class="form-control input-message" placeholder="" rows="7" name="b9"></textarea>
                                                 </div>
+                                                <p class="note">(Contoh: melakukan analisis lab, mengawasi pemotongan pola, mendesain tekstil, mengoperasikan mesin, pemeliharaan alat berat)</p>
                                             </div>
                                         </div>
                                     </div>
@@ -349,7 +351,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b10" value="4" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b10">
                                                 </div>
                                             </div>
@@ -393,7 +395,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b12" value="5" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b12Lainnya">
                                                 </div>
                                             </div>
@@ -623,7 +625,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b20" value="7" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b20Lainnya">
                                                 </div>
                                             </div>
@@ -716,7 +718,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b22" value="10" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b22Lainnya">
                                                 </div>
                                             </div>
@@ -790,7 +792,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b25" value="9" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b25Lainnya">
                                                 </div>
                                             </div>
@@ -821,7 +823,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b26" value="4" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b26Lainnya">
                                                 </div>
                                             </div>
@@ -863,7 +865,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b27" value="6" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b27Lainnya">
                                                 </div>
                                             </div>
@@ -898,7 +900,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b28" value="5" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b28Lainnya">
                                                 </div>
                                             </div>
@@ -934,7 +936,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b29" value="5" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b29Lainnya">
                                                 </div>
                                             </div>
@@ -1045,7 +1047,7 @@
                                             <div class="form-group">
                                                 <label for="name">Sebutkan bidang pelatihan/kursus yang diikuti :</label>
                                                 <div class="section-field textarea">
-                                                    <textarea class="form-control input-message" placeholder="Comment*" rows="7" name="bidangPelatihan"></textarea>
+                                                    <textarea class="form-control input-message" placeholder="" rows="7" name="bidangPelatihan"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1076,7 +1078,7 @@
                                             <div class="form-group">
                                                 <label for="name">Sebutkan sertifikat kompetensi yang dibutuhkan :</label>
                                                 <div class="section-field textarea">
-                                                    <textarea class="form-control input-message" placeholder="Comment*" rows="7" name="sertifikat"></textarea>
+                                                    <textarea class="form-control input-message" placeholder="" rows="7" name="sertifikat"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1107,7 +1109,7 @@
                                             <div class="form-group">
                                                 <label for="name">Sebutkan dokumen utama yang menjadi syarat melamar pekerjaan :</label>
                                                 <div class="section-field textarea">
-                                                    <textarea class="form-control input-message" placeholder="Comment*" rows="7" name="dokumenUtama"></textarea>
+                                                    <textarea class="form-control input-message" placeholder="" rows="7" name="dokumenUtama"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1191,7 +1193,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b37" value="10" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b37Lainnya">
                                                 </div>
                                             </div>
@@ -1203,7 +1205,7 @@
                                             <div class="form-group">
                                                 <label for="name">B38. Apa produk/jasa utama yang dihasilkan oleh usaha Anda?</label>
                                                 <div class="section-field textarea">
-                                                    <textarea class="form-control input-message" placeholder="Comment*" rows="7" name="b38"></textarea>
+                                                    <textarea class="form-control input-message" placeholder="" rows="7" name="b38"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1294,7 +1296,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b42" value="6" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b42Lainnya">
                                                 </div>
                                             </div>
@@ -1386,7 +1388,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b45" value="6" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b45Lainnya">
                                                 </div>
                                             </div>
@@ -1412,7 +1414,7 @@
                                             <div class="form-group">
                                                 <label for="name">B48. Apa alasan Anda melanjutkan pendidikan/ mengikuti pelatihan tersebut?</label>
                                                 <div class="section-field textarea">
-                                                    <textarea class="form-control input-message" placeholder="Comment*" rows="7" name="b48"></textarea>
+                                                    <textarea class="form-control input-message" placeholder="" rows="7" name="b48"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1468,7 +1470,7 @@
                                             <div class="form-group">
                                                 <label for="name">B51a. Nama Pekerjaan </label>
                                                 <div class="section-field textarea">
-                                                    <textarea class="form-control input-message" placeholder="Comment*" rows="7" name="b51a"></textarea>
+                                                    <textarea class="form-control input-message" placeholder="" rows="7" name="b51a"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1545,7 +1547,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b52" value="9" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b52Lainnya">
                                                 </div>
                                             </div>
@@ -1575,7 +1577,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b53" value="4" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b53Lainnya">
                                                 </div>
                                             </div>
@@ -1630,7 +1632,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b54" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b54Lainnya">
                                                 </div>
                                             </div>
@@ -1685,7 +1687,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="b55" value="8" id="flexRadioDefault7">
-                                                <div class="col-4">
+                                                <div class="col-4" style="padding-left:0px !important">
                                                     <input id="name" type="text" placeholder="Lainnya.." class="form-control" name="b55Lainnya">
                                                 </div>
                                             </div>
@@ -2449,7 +2451,7 @@
                                             <div class="form-group">
                                                 <label for="name">Menurut Anda hal/aspek apa di politeknik yang paling membutuhkan perbaikan dan sebutkan saran perbaikan </label>
                                                 <div class="section-field textarea">
-                                                    <textarea class="form-control input-message" placeholder="Comment*" rows="7" name="saran"></textarea>
+                                                    <textarea class="form-control input-message" placeholder="" rows="7" name="saran"></textarea>
                                                 </div>
                                             </div>
                                         </div>

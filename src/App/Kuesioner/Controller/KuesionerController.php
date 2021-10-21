@@ -55,7 +55,7 @@ class KuesionerController extends GlobalFunc
 
         $data_mhs_create = $this->model->create($datas);
 
-        return new RedirectResponse('/data-mahasiswa');
+        return new RedirectResponse('/survey');
     }
 
 

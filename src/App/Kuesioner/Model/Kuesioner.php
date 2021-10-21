@@ -50,28 +50,21 @@ class Kuesioner extends GlobalFunc
     }
     public function create($datas)
     {
-        $nim = $datas['nim'];
-        $namaMhs = $datas['namaMhs'];
-        $tempatLahir = $datas['tempatLahir'];
-        $tglLahir = $datas['tglLahir'];
-        $programStudi = $datas['programStudi'];
-        $asalSekolah = $datas['asalSekolah'];
-        $alamatSekolah = $datas['alamatSekolah'];
-        $kelas = $datas['kelas'];
-        $jalurMasuk = $datas['jalurMasuk'];
-        $tahunAjaran = $datas['tahunAjaran'];
-        $tahunLulus = $datas['tahunLulus'];
+        $idJawaban = uniqid('id');
+        $idPertanyaan = $datas['idPertanyaan'];
+        $jawaban = $datas['jawaban'];
+        $jenisJawaban = $datas['jenisJawaban'];
         $createdAt = date('Y-m-d H:i:s');
         $updatedAt = date('Y-m-d H:i:s');
 
-        $sql = "INSERT INTO " . $this->table . " VALUES ('$nim', '$namaMhs', '$tempatLahir', '$tglLahir', '$programStudi','$asalSekolah','$alamatSekolah','$kelas','$jalurMasuk','$tahunAjaran', '$tahunLulus','$createdAt', '$updatedAt')";
+        $sql = "INSERT INTO " . $this->table . " VALUES ('$idJawaban', '$idPertanyaan', '$jawaban', '$jenisJawaban','$createdAt', '$updatedAt')";
         // dd($sql);
 
         try {
             $data = $this->conn->prepare($sql);
             $data->execute();
 
-            return $nim;
+            return $idJawaban;
         } catch (PDOException $e) {
             echo $e;
             die();

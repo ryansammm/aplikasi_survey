@@ -9483,3 +9483,30 @@ canvas {
 .form-check {
   padding-bottom: 0.5rem !important;
 }
+
+.note {
+  font-size: 8pt;
+  padding-top: 5pt;
+}
+
+.form-lainnya {
+  font-size: 10pt;
+  padding: 10px 10px 2px 5px;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #757575;
+  background-color: #fff;
+  color: #626262 !important;
+}
+
+.form-lainnya:focus {
+  font-size: 10pt;
+  padding: 10px 10px 2px 5px;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #757575;
+  background-color: #fff;
+  color: #626262 !important;
+}
