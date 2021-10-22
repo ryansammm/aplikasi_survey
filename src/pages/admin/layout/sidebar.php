@@ -27,7 +27,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="index.html"><img src="/assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                            <a href="/dashboard"><img src="/assets/images/logo/logo.png" alt="Logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -48,12 +48,6 @@
                             <a href="/data-mahasiswa" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Basis Data Mahasiswa</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item <?= strpos($GLOBALS['url'], '/result-survey')  !== false ? 'active' : ''; ?>">
-                            <a href="/result-survey" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Result Survey</span>
                             </a>
                         </li>
                         <li class="sidebar-item <?= strpos($GLOBALS['url'], '/master-survey')  !== false ? 'active' : ''; ?>">

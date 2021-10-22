@@ -8,6 +8,7 @@ use App\GroupKontak\Model\GroupKontak;
 use App\HargaItem\Model\HargaItem;
 use App\InternetUserAlamat\Model\InternetUserAlamat;
 use App\Kontak\Model\Kontak;
+use App\Kuesioner\Model\Kuesioner;
 use App\LayananInternet\Model\LayananInternet;
 use App\LayananInternetDetail\Model\LayananInternetDetail;
 use App\Media\Model\Media;
@@ -42,12 +43,88 @@ class DashboardController extends GlobalFunc
             return new RedirectResponse("/admin");
         }
 
-        // dd($_SESSION);
+
+
+
+        // dd($id);
 
 
 
 
         return $this->render_template('admin/dashboard/index', []);
+    }
+
+
+    public function chart(Request $request)
+    {
+        $bulan = $request->query->get('bulan') == "" ? date('m') : $request->query->get('bulan');
+
+        if ($bulan == '1') {
+            $nama_bulan = 'Januari';
+        } else if ($bulan == '2') {
+            $nama_bulan = 'Februari';
+        } else if ($bulan == '3') {
+            $nama_bulan = 'Maret';
+        } else if ($bulan == '4') {
+            $nama_bulan = 'April';
+        } else if ($bulan == '5') {
+            $nama_bulan = 'Mei';
+        } else if ($bulan == '6') {
+            $nama_bulan = 'Juni';
+        } else if ($bulan == '7') {
+            $nama_bulan = 'Juli';
+        } else if ($bulan == '8') {
+            $nama_bulan = 'Agustus';
+        } else if ($bulan == '9') {
+            $nama_bulan = 'September';
+        } else if ($bulan == '10') {
+            $nama_bulan = 'Oktober';
+        } else if ($bulan == '11') {
+            $nama_bulan = 'November';
+        } else {
+            $nama_bulan = 'Desember';
+        }
+
+        $kuesioner = new Kuesioner();
+
+        // SEBARAN LULUSAN
+        $data_kuesioner_bekerja = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b1' AND jawaban = 'Ya'");
+        $data_kuesioner_wirausaha = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b36' AND jawaban = 'Ya' ");
+        $data_kuesioner_pendidikan = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b44' AND jawaban = 'Ya' ");
+        $data_kuesioner_lainnya = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b49' AND jawaban = 'Saat ini saya TIDAK bekerja/berwirausaha/ melanjutkan pendidikan' ");
+        // dd($data_kuesioner_bekerja);
+
+        // MASA TUNGGU
+        $data_kuesioner_b29a = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b29' AND jawaban = 'Sebelum lulus kuliah' ");
+        $data_kuesioner_b29b = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b29' AND jawaban = '0-3 bulan setelah lulus kuliah' ");
+        $data_kuesioner_b29c = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b29' AND jawaban = '4-6 bulan setelah lulus kuliah' ");
+        $data_kuesioner_b29d = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b29' AND jawaban = '>6 bulan setelah lulus kuliah' ");
+
+        // SESUAI
+        $data_kuesioner_b13a = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b13' AND jawaban = 'Ya, sesuai' ");
+        $data_kuesioner_b13b = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b13' AND jawaban = 'Tidak, tingkat pendidikan saya LEBIH TINGGI dari tingkat pendidikan yg dibutuhkan oleh pekerjaan ini' ");
+        $data_kuesioner_b13c = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b13' AND jawaban = 'Tidak, tingkat pendidikan saya LEBIH RENDAH dari tingkat pendidikan yg dibutuhkan oleh pekerjaan ini' ");
+        $data_kuesioner_b13d = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b13' AND jawaban = 'Tidak, pekerjaan ini tidak membutuhkan pendidikan TINGGI' ");
+
+
+        // UKURAN TEMPAT 
+        $data_kuesioner_b3a = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b3' AND jawaban = 'Instansi Pemerintah' ");
+        $data_kuesioner_b3b = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b3' AND jawaban = 'Badan Usaha Milik Negara/ Daerah' ");
+        $data_kuesioner_b3c = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b3' AND jawaban = 'Perusahaan swasta multi nasional' ");
+        $data_kuesioner_b3d = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b3' AND jawaban = 'Perusahaan swasta dalam negeri' ");
+        $data_kuesioner_b3e = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b3' AND jawaban = 'Perusahaan perseorangan' ");
+        $data_kuesioner_b3f = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b3' AND jawaban = 'Koperasi/ Yayasan' ");
+        $data_kuesioner_b3g = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b3' AND jawaban = 'Lainnya' ");
+
+
+        //PENGHASILAN PERTAMA
+        $data_kuesioner_b28a = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b28' AND jawaban = '< 3jt' ");
+        $data_kuesioner_b28b = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b28' AND jawaban = '3 - 5jt' ");
+        $data_kuesioner_b28c = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b28' AND jawaban = '5 - 10jt' ");
+        $data_kuesioner_b28d = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b28' AND jawaban = '> 10jt' ");
+        $data_kuesioner_b28e = $kuesioner->countRows("WHERE month(jawaban.createdAt) = '$bulan' AND year(jawaban.createdAt) = 2021 AND idPertanyaan = 'b28' AND jawaban = 'Lainnya' ");
+
+        return new JsonResponse(['data_kuesioner_bekerja' => $data_kuesioner_bekerja, 'nama_bulan' => $nama_bulan, 'data_kuesioner_wirausaha' => $data_kuesioner_wirausaha, 'data_kuesioner_pendidikan' => $data_kuesioner_pendidikan, 'data_kuesioner_lainnya' => $data_kuesioner_lainnya, 'data_kuesioner_b29a' => $data_kuesioner_b29a, 'data_kuesioner_b29b' => $data_kuesioner_b29b, 'data_kuesioner_b29c' => $data_kuesioner_b29c, 'data_kuesioner_b29d' => $data_kuesioner_b29d, 'data_kuesioner_b13a' => $data_kuesioner_b13a, 'data_kuesioner_b13b' => $data_kuesioner_b13b, 'data_kuesioner_b13c' => $data_kuesioner_b13c, 'data_kuesioner_b13d' => $data_kuesioner_b13d, 'data_kuesioner_b3a' => $data_kuesioner_b3a, 'data_kuesioner_b3b' => $data_kuesioner_b3b, 'data_kuesioner_b3c' => $data_kuesioner_b3c, 'data_kuesioner_b3d' => $data_kuesioner_b3d, 'data_kuesioner_b3e' => $data_kuesioner_b3e, 'data_kuesioner_b3f' => $data_kuesioner_b3f, 'data_kuesioner_b3g' => $data_kuesioner_b3g, 'data_kuesioner_b28a' => $data_kuesioner_b28a, 'data_kuesioner_b28b' => $data_kuesioner_b28b, 'data_kuesioner_b28c' => $data_kuesioner_b28c, 'data_kuesioner_b28d' => $data_kuesioner_b28d, 'data_kuesioner_b28e' => $data_kuesioner_b28e]);
     }
 
     public function detail(Request $request)
@@ -83,35 +160,7 @@ class DashboardController extends GlobalFunc
         // dd($datas);
 
 
-        $reseller = new Reseller();
-        $nama_reseller = $reseller->selectAll();
-        $sales_perorangan = new SalesPerorangan();
-        $nama_sales_perorangan = $sales_perorangan->selectAll();
-
-        $data_sales = array_merge($nama_reseller, $nama_sales_perorangan);
-
-        // Alamat
-        $kode_minat = uniqid('M-');
-        $provinsi = new Provinsi();
-        $data_provinsi = $provinsi->selectAll();
-
-        $minat_layanan = new MinatLayanan();
-        $data_minat_layanan = $minat_layanan->selectOne("WHERE idMinat = '" . $id . "'");
-        // dd($data_minat_layanan);
-
-        // Kontak
-        $jeniskontak = new Kontak();
-        $id_jenis_telp = $jeniskontak->namaKontak("Telepon")['idKontak'];
-        $id_jenis_whatsapp = $jeniskontak->namaKontak("Whatsapp")['idKontak'];
-        $id_jenis_email = $jeniskontak->namaKontak("Email")['idKontak'];
-
-        // Group Kontak
-        $group_kontak = new GroupKontak();
-        $data_kontak_telp = $group_kontak->selectOne("WHERE idRelation = '" . $datas['kodeMinat'] . "' AND idKontak = '" . $id_jenis_telp . "'");
-        $data_kontak_whatsapp = $group_kontak->selectOne("WHERE idRelation = '" . $datas['kodeMinat'] . "' AND idKontak = '" . $id_jenis_whatsapp . "'");
-        $data_kontak_email = $group_kontak->selectOne("WHERE idRelation = '" . $datas['kodeMinat'] . "' AND idKontak = '" . $id_jenis_email . "'");
-
-        return $this->render_template('admin/master/minat/detail', ['datas' => $datas, 'kode_minat' => $kode_minat, 'provinsi' => $data_provinsi, 'data_minat_layanan' => $data_minat_layanan, 'data_kontak_telp' => $data_kontak_telp, 'data_kontak_whatsapp' => $data_kontak_whatsapp, 'data_kontak_email' => $data_kontak_email, 'data_sales' => $data_sales]);
+        return $this->render_template('admin/master/minat/detail', ['datas' => $datas]);
     }
 
     public function create(Request $request)
@@ -120,21 +169,10 @@ class DashboardController extends GlobalFunc
             return new RedirectResponse("/admin");
         }
 
-        $kode_minat = uniqid('M-');
-        $provinsi = new Provinsi();
-        $data_provinsi = $provinsi->selectAll();
-        $layanan = new LayananInternet();
-        $data_layanan = $layanan->selectAll();
-        $kecepatan = new LayananInternet();
-        $data_kecepatan = $kecepatan->selectAll();
-        $reseller = new Reseller();
-        $nama_reseller = $reseller->selectAll();
-        $sales_perorangan = new SalesPerorangan();
-        $nama_sales_perorangan = $sales_perorangan->selectAll();
 
-        $data_sales = array_merge($nama_reseller, $nama_sales_perorangan);
 
-        return $this->render_template('admin/master/minat/create', ['kode_minat' => $kode_minat, 'provinsi' => $data_provinsi, 'layanan' => $data_layanan, 'kecepatan' => $data_kecepatan, 'data_sales' => $data_sales]);
+
+        return $this->render_template('admin/master/minat/create', []);
     }
 
 
@@ -152,82 +190,7 @@ class DashboardController extends GlobalFunc
         // $data_layanan = $layanan->selectOne("WHERE idLayananinternet  =  '" . $datas['idLayanan'] . "'");
         // dd($datas, $data_layanan['namaLayanan']);
 
-        $jeniskontak = new Kontak();
-        $id_jenis_telp = $jeniskontak->namaKontak("Telepon")['idKontak'];
-        $id_jenis_whatsapp = $jeniskontak->namaKontak("Whatsapp")['idKontak'];
-        $id_jenis_email = $jeniskontak->namaKontak("Email")['idKontak'];
 
-        $create = $this->model->create($request->request);
-
-        $group_kontak = new GroupKontak();
-
-        // create kontak minat telepon
-        $data_group_kontak_telp = [
-            'idRelation' => $create,
-            'idKontak' => $id_jenis_telp,
-            'isiKontak' => $datas['telpkontak']
-        ];
-        $create_group_kontak_telp = $group_kontak->create($data_group_kontak_telp);
-
-        // create kontak minat whatsapp
-        $data_group_kontak_whatsapp = [
-            'idRelation' => $create,
-            'idKontak' => $id_jenis_whatsapp,
-            'isiKontak' => $datas['whatsappkontak']
-        ];
-        $create_group_kontak_whatsapp = $group_kontak->create($data_group_kontak_whatsapp);
-
-        // create kontak minat email
-        $data_group_kontak_email = [
-            'idRelation' => $create,
-            'idKontak' => $id_jenis_email,
-            'isiKontak' => $datas['emailkontak']
-        ];
-        $create_group_kontak_email = $group_kontak->create($data_group_kontak_email);
-
-        // store foto lokasi
-        $media = new Media();
-        $media->create($_FILES['fotolokasi'], $create, '1', 'foto-lokasi');
-        // dd($_FILES['fotolokasi']);
-
-
-        // Store Layanan
-        $layanan = new LayananInternet();
-        $layanan_detail = new LayananInternetDetail();
-        $minat_layanan = new MinatLayanan();
-        $data_layanan = $layanan->selectOne("WHERE idLayananinternet  =  '" . $datas['idLayanan'] . "'");
-        $data_layanan_detail = $layanan_detail->selectOne("WHERE idLayananinternetdetail = '" . $datas['idLayanandetail'] . "'");
-        $data_minat_layanan = [
-            'idMinat' => $datas['kodeMinat'],
-            'idLayanan' => $data_layanan['idLayananinternet'],
-            'idLayanandetail' => $data_layanan_detail['idLayananinternetdetail'],
-            'biayaregistrasiLayanan' => $data_layanan['biayaregistrasi'],
-            'biayabulananLayanan' => $data_layanan_detail['biayabulanan'],
-            'biayadasarregistrasiLayanan' => $data_layanan['biayadasarregistrasiLayanan'],
-            'biayadasarbulananLayanan' => $data_layanan_detail['biayadasarbulanan'],
-            'ppnbiayaregistrasiLayanan' => $data_layanan['ppn'],
-            'ppnbiayabulananLayanan' => $data_layanan_detail['ppn'],
-        ];
-        $create_data_layanan = $minat_layanan->create($data_minat_layanan);
-
-        // create chronlogy
-        // $chronology = new Chronology();
-        // $message = $this->model->chronologyMessage('store', 'User 1', [
-        //     'produk' => $request->request->get('namaItem')
-        // ]);
-        // $createChronology = $chronology->create($message, $produk);
-
-
-
-        $user = new Users();
-
-        $namaUser = $_SESSION['_sf2_attributes']['namaUser'];
-
-
-        $ambilUser = $user->selectOneUser($this->session->get('idUser'));
-        $message = "" . $namaUser . " telah menambahkan data peminat baru atas nama <b>" . $datas['namaPemohon'] . "</b> dengan layanan <b>" . $data_layanan['namaLayanan'] . " " . $data_layanan_detail['kecepatan'] . " Mbps</b>";
-        $kirim = $user->telegram($message, $ambilUser['chatId']);
-        // dd($kirim);
 
         return new RedirectResponse('/minat');
     }
@@ -243,38 +206,8 @@ class DashboardController extends GlobalFunc
         $detail = $this->model->selectOne($id);
         // dd($detail);
 
-        $provinsi = new Provinsi();
-        $data_provinsi = $provinsi->selectAll();
 
-        $minat_layanan = new MinatLayanan();
-        $data_minat_layanan = $minat_layanan->selectOne("WHERE idMinat = '" . $id . "'");
-        $data_layanan = new LayananInternet();
-        $layanan = $data_layanan->selectAll();
-        $data_layanan_detail = new LayananInternetDetail();
-        $layanan_detail = $data_layanan_detail->selectAll();
-
-        $reseller = new Reseller();
-        $nama_reseller = $reseller->selectAll();
-        $sales_perorangan = new SalesPerorangan();
-        $nama_sales_perorangan = $sales_perorangan->selectAll();
-
-        $data_sales = array_merge($nama_reseller, $nama_sales_perorangan);
-        // dd($data_sales);
-
-        // Kontak
-        $jeniskontak = new Kontak();
-        $id_jenis_telp = $jeniskontak->namaKontak("Telepon")['idKontak'];
-        $id_jenis_whatsapp = $jeniskontak->namaKontak("Whatsapp")['idKontak'];
-        $id_jenis_email = $jeniskontak->namaKontak("Email")['idKontak'];
-
-        // Group Kontak
-        $group_kontak = new GroupKontak();
-        $data_kontak_telp = $group_kontak->selectOne("WHERE idRelation = '" . $detail['kodeMinat'] . "' AND idKontak = '" . $id_jenis_telp . "'");
-        $data_kontak_whatsapp = $group_kontak->selectOne("WHERE idRelation = '" . $detail['kodeMinat'] . "' AND idKontak = '" . $id_jenis_whatsapp . "'");
-        $data_kontak_email = $group_kontak->selectOne("WHERE idRelation = '" . $detail['kodeMinat'] . "' AND idKontak = '" . $id_jenis_email . "'");
-
-
-        return $this->render_template('admin/master/minat/edit', ['detail' => $detail, 'provinsi' => $data_provinsi, 'data_kontak_telp' => $data_kontak_telp, 'data_kontak_whatsapp' => $data_kontak_whatsapp, 'data_kontak_email' => $data_kontak_email, 'data_minat_layanan' => $data_minat_layanan, 'layanan' => $layanan, 'layanan_detail' => $layanan_detail, 'data_sales' => $data_sales]);
+        return $this->render_template('admin/master/minat/edit', []);
     }
 
     public function update(Request $request)
@@ -286,104 +219,7 @@ class DashboardController extends GlobalFunc
         $datas = $request->request->all();
         // dd($datas);
 
-        $minat_layanan = new MinatLayanan();
-        $layanan = new LayananInternet();
-        $layanan_detail = new LayananInternetDetail();
-        $data_layanan = $layanan->selectOne("WHERE idLayananinternet  =  '" . $datas['idLayanan'] . "'");
-        $data_layanan_detail = $layanan_detail->selectOne("WHERE idLayananinternet = '" . $datas['idLayanandetail'] . "'");
-        $data_minat_layanan = [
-            'idMinat' => $datas['kodeMinat'],
-            'idLayanan' => $data_layanan['idLayananinternet'],
-            'idLayanandetail' => $data_layanan_detail['idLayananinternetdetail'],
-            'biayaregistrasiLayanan' => $data_layanan['biayaregistrasi'],
-            'biayabulananLayanan' => $data_layanan_detail['biayabulanan'],
-            'biayadasarregistrasiLayanan' => $data_layanan['biayadasarregistrasiLayanan'],
-            'biayadasarbulananLayanan' => $data_layanan_detail['biayadasarbulanan'],
-            'ppnbiayaregistrasiLayanan' => $data_layanan['ppn'],
-            'ppnbiayabulananLayanan' => $data_layanan_detail['ppn'],
-        ];
-        // dd($data_layanan_detail, $datas);
 
-        $id = $request->attributes->get('id');
-        $detail = $this->model->selectOne($id);
-
-        $update = $this->model->update($id, $datas);
-
-        $minat_layanan = new MinatLayanan();
-        $layanan = new LayananInternet();
-        $layanan_detail = new LayananInternetDetail();
-
-        $data_layanan = $layanan->selectOne("WHERE idLayananinternet  =  '" . $datas['idLayanan'] . "'");
-        $data_layanan_detail = $layanan_detail->selectOne("WHERE idLayananinternet = '" . $datas['idLayanandetail'] . "'");
-        // dd($data_layanan, $data_layanan_detail);
-        $d_minat_layanan = $minat_layanan->delete($detail['kodeMinat']);
-
-        $data_minat_layanan = [
-            'idMinat' => $datas['kodeMinat'],
-            'idLayanan' => $data_layanan['idLayananinternet'],
-            'idLayanandetail' => $data_layanan_detail['idLayananinternetdetail'],
-            'biayaregistrasiLayanan' => $data_layanan['biayaregistrasi'],
-            'biayabulananLayanan' => $data_layanan_detail['biayabulanan'],
-            'biayadasarregistrasiLayanan' => $data_layanan['biayadasarregistrasiLayanan'],
-            'biayadasarbulananLayanan' => $data_layanan_detail['biayadasarbulanan'],
-            'ppnbiayaregistrasiLayanan' => $data_layanan['ppn'],
-            'ppnbiayabulananLayanan' => $data_layanan_detail['ppn'],
-        ];
-        // dd($data_minat_layanan);
-        $create_data_layanan = $minat_layanan->create($data_minat_layanan);
-
-        // Kontak
-        $jeniskontak = new Kontak();
-        $id_jenis_telp = $jeniskontak->namaKontak("Telepon")['idKontak'];
-        $id_jenis_whatsapp = $jeniskontak->namaKontak("Whatsapp")['idKontak'];
-        $id_jenis_email = $jeniskontak->namaKontak("Email")['idKontak'];
-
-        // Media
-        if ($_FILES['fotolokasi']['name'] != '') {
-            $media = new Media();
-            // select existing foto item
-            $selectItem = $media->selectOneMedia("WHERE idRelation = '$id'");
-            // delete existing foto item
-            $deleteFotoItem = $media->delete($selectItem['idMedia']);
-            // delete file foto item
-            $deleteFileFotoItam = $media->deleteFile($selectItem['pathMedia']);
-
-            $idMedia = uniqid('med');
-            $idUser = '1';
-            $media->create($_FILES['fotolokasi'], $update, '1', 'foto-lokasi');
-        }
-
-        // Group Kontak
-        $group_kontak = new GroupKontak();
-        $data_kontak_telp = $group_kontak->selectOne("WHERE idRelation = '" . $detail['kodeMinat'] . "' AND idKontak = '" . $id_jenis_telp . "'");
-        $data_kontak_whatsapp = $group_kontak->selectOne("WHERE idRelation = '" . $detail['kodeMinat'] . "' AND idKontak = '" . $id_jenis_whatsapp . "'");
-        $data_kontak_email = $group_kontak->selectOne("WHERE idRelation = '" . $detail['kodeMinat'] . "' AND idKontak = '" . $id_jenis_email . "'");
-
-        // Update with delete method
-        $delete_kontak = $group_kontak->delete("WHERE idRelation = '" . $detail['kodeMinat'] . "'");
-        // create kontak minat telepon
-        $data_group_kontak_telp = [
-            'idRelation' => $detail['kodeMinat'],
-            'idKontak' => $id_jenis_telp,
-            'isiKontak' => $datas['telpkontak']
-        ];
-        $create_group_kontak_telp = $group_kontak->create($data_group_kontak_telp);
-
-        // create kontak minat whatsapp
-        $data_group_kontak_whatsapp = [
-            'idRelation' => $detail['kodeMinat'],
-            'idKontak' => $id_jenis_whatsapp,
-            'isiKontak' => $datas['whatsappkontak']
-        ];
-        $create_group_kontak_whatsapp = $group_kontak->create($data_group_kontak_whatsapp);
-
-        // create kontak minat email
-        $data_group_kontak_email = [
-            'idRelation' => $detail['kodeMinat'],
-            'idKontak' => $id_jenis_email,
-            'isiKontak' => $datas['emailkontak']
-        ];
-        $create_group_kontak_email = $group_kontak->create($data_group_kontak_email);
 
         return new RedirectResponse('/minat');
     }
@@ -397,27 +233,6 @@ class DashboardController extends GlobalFunc
 
         $id = $request->attributes->get('id');
         // dd($id);
-
-
-        $minat = new Minat();
-        $minat_delete = $minat->delete($id);
-
-        $minat_layanan = new MinatLayanan();
-        $minat_layanan_delete = $minat_layanan->delete($id);
-
-        $group_kontak = new GroupKontak();
-        $group_kontak_delete = $group_kontak->delete("WHERE idRelation = '" . $id . "'");
-
-        $media = new Media();
-        $selectItem = $media->selectOneMedia("WHERE idRelation = '$id'");
-        // delete existing foto item
-        $deleteFotoItem = $media->delete($selectItem['idMedia']);
-        // delete file foto item
-        $deleteFileFotoItam = $media->deleteFile($selectItem['pathMedia']);
-
-        $user_request = new UserRequestSurvey();
-        $delete_user_request = $user_request->delete($id);
-
 
 
         return new RedirectResponse('/minat');
@@ -465,10 +280,6 @@ class DashboardController extends GlobalFunc
         $keterangan = $datas['keterangan'];
         $minat_status = $this->model->cancel($id, $status, $keterangan);
 
-        $user = new Users();
-        $ambilUser = $user->selectOneUser($this->session->get('idUser'));
-        $message = "Batal";
-        $kirim = $user->telegram($message, $ambilUser['chatId']);
 
 
 

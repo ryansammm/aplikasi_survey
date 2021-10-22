@@ -3,6 +3,7 @@
 namespace App\BasisDataMahasiswa\Controller;
 
 use App\BasisDataMahasiswa\Model\BasisDataMahasiswa;
+use App\Kuesioner\Model\Kuesioner;
 use App\ProgramStudi\Model\ProgramStudi;
 use Core\GlobalFunc;
 use Symfony\Component\HttpFoundation\Request;

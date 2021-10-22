@@ -68,7 +68,7 @@
                         <!-- menu logo -->
                         <ul class="menu-logo">
                             <li>
-                                <a href="index-01.html"><img id="logo_img" src="/assets/mhs/images/logo.png" alt="Politkenik_AKA"> </a>
+                                <a href="/survey"><img id="logo_img" src="/assets/mhs/images/logo.png" alt="Politkenik_AKA"> </a>
                             </li>
                         </ul>
                         <!-- menu links -->

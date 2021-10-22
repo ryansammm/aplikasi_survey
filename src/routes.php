@@ -38,6 +38,9 @@ $routes->add('adminLogoutAction', new Route('/admin/logout', [
 $routes->add('dahsboard', new Route('/dashboard', [
     '_controller' => 'App\Dashboard\Controller\DashboardController::index',
 ]));
+$routes->add('dahsboardChart', new Route('/dashboard/chart', [
+    '_controller' => 'App\Dashboard\Controller\DashboardController::chart',
+]));
 
 
 $routes->add('dataMahasiswa', new Route('/data-mahasiswa', [
@@ -61,6 +64,7 @@ $routes->add('dataMahasiswaDetail', new Route('/data-mahasiswa/{id}', [
 $routes->add('dataMahasiswaDelete', new Route('/data-mahasiswa/{id}/delete', [
     '_controller' => 'App\BasisDataMahasiswa\Controller\BasisDataMahasiswaController::delete',
 ]));
+
 
 
 $routes->add('masterSurvey', new Route('/master-survey', [
@@ -88,20 +92,26 @@ $routes->add('importDelete', new Route('/deleteA', [
 $routes->add('survey', new Route('/survey', [
     '_controller' => 'App\Survey\Controller\SurveyController::index',
 ]));
+$routes->add('surveyNim', new Route('/survey/nim', [
+    '_controller' => 'App\Survey\Controller\SurveyController::nim',
+]));
 
 
 $routes->add('infografis', new Route('/infografis', [
     '_controller' => 'App\Infografis\Controller\InfografisController::index',
 ]));
-$routes->add('infografisDetail', new Route('/infografis/detail', [
+$routes->add('infografisDetail', new Route('/infografis/{tahun}/detail', [
     '_controller' => 'App\Infografis\Controller\InfografisController::detail',
 ]));
+$routes->add('infografischart', new Route('/infografis/{tahun}/chart', [
+    '_controller' => 'App\Infografis\Controller\InfografisController::chart',
+]));
 
 
-$routes->add('kuesioner', new Route('/kuesioner', [
+$routes->add('kuesioner', new Route('/kuesioner/{id}', [
     '_controller' => 'App\Kuesioner\Controller\KuesionerController::index',
 ]));
-$routes->add('kuesionerStore', new Route('/kuesioner/store', [
+$routes->add('kuesionerStore', new Route('/kuesioner/{id}/store', [
     '_controller' => 'App\Kuesioner\Controller\KuesionerController::store',
 ]));
 

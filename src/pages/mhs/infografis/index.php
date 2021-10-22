@@ -12,42 +12,22 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-4">
-                <div class="pricing-table boxed">
-                    <div class="pricing-top">
-                        <div class="pricing-title">
-                            <h3 class="mb-15">Tahun 2019</h3>
-                        </div>
-                        <div class="pricing-button">
-                            <a class="button" href="/infografis/detail">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <div class="pricing-table boxed">
-                    <div class="pricing-top">
-                        <div class="pricing-title">
-                            <h3 class="mb-15">Tahun 2020</h3>
-                        </div>
-                        <div class="pricing-button">
-                            <a class="button" href="/infografis/detail">Selengkapnya</a>
+
+            <?php foreach ($data_hasil_survey as $key => $value) { ?>
+                <div class="col-lg-4 col-md-4">
+                    <div class="pricing-table boxed">
+                        <div class="pricing-top">
+                            <div class="pricing-title">
+                                <h3 class="mb-15">Tahun <?= $value['tahun'] ?></h3>
+                            </div>
+                            <div class="pricing-button">
+                                <a class="button" href="/infografis/<?= $value['tahun'] ?>/detail">Selengkapnya</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <div class="pricing-table boxed">
-                    <div class="pricing-top">
-                        <div class="pricing-title">
-                            <h3 class="mb-15">Tahun 2021</h3>
-                        </div>
-                        <div class="pricing-button">
-                            <a class="button" href="/infografis/detail">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
+
         </div>
     </div>
 </section>

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\BasisDataMahasiswa\Model;
+namespace App\HasilSurvey\Model;
 
 use Core\GlobalFunc;
 use PDOException;
 
-class BasisDataMahasiswa extends GlobalFunc
+class HasilSurvey extends GlobalFunc
 {
-    private $table = 'mahasiswa';
-    private $primaryKey = 'nim';
+    private $table = 'hasil_survey';
+    private $primaryKey = 'idSurvey';
     public $conn;
 
 
@@ -21,6 +21,7 @@ class BasisDataMahasiswa extends GlobalFunc
     public function selectAll($where = "")
     {
         $sql = "SELECT * FROM " . $this->table . " " . $where;
+        // dd($sql);
 
         try {
             $query = $this->conn->prepare($sql);
@@ -33,6 +34,25 @@ class BasisDataMahasiswa extends GlobalFunc
             die();
         }
     }
+
+    public function selectAllTahun()
+    {
+        $sql = "SELECT * FROM " . $this->table . " GROUP BY tahun ";
+        // dd($sql);
+
+        try {
+            $query = $this->conn->prepare($sql);
+            $query->execute();
+            $data = $query->fetchAll();
+
+            return $data;
+        } catch (PDOException $e) {
+            echo $e;
+            die();
+        }
+    }
+
+
     public function selectOne($id)
     {
         $sql = "SELECT * FROM " . $this->table . " WHERE " . $this->primaryKey . " = '$id'";
@@ -48,50 +68,22 @@ class BasisDataMahasiswa extends GlobalFunc
             die();
         }
     }
-
-
-    public function selectOneNim($where = "")
-    {
-        $sql = "SELECT * FROM " . $this->table . " " . $where;
-
-        try {
-            $query = $this->conn->prepare($sql);
-            $query->execute();
-            $data = $query->fetch();
-
-            return $data;
-        } catch (PDOException $e) {
-            echo $e;
-            die();
-        }
-    }
-
-
-
     public function create($datas)
     {
+        $idSurvey = uniqid('id');
         $nim = $datas['nim'];
-        $namaMhs = $datas['namaMhs'];
-        $tempatLahir = $datas['tempatLahir'];
-        $tglLahir = $datas['tglLahir'];
-        $programStudi = $datas['programStudi'];
-        $asalSekolah = $datas['asalSekolah'];
-        $alamatSekolah = $datas['alamatSekolah'];
-        $kelas = $datas['kelas'];
-        $jalurMasuk = $datas['jalurMasuk'];
-        $tahunAjaran = $datas['tahunAjaran'];
-        $tahunLulus = $datas['tahunLulus'];
+        $tahun = date('Y');
         $createdAt = date('Y-m-d H:i:s');
         $updatedAt = date('Y-m-d H:i:s');
 
-        $sql = "INSERT INTO " . $this->table . " VALUES ('$nim', '$namaMhs', '$tempatLahir', '$tglLahir', '$programStudi','$asalSekolah','$alamatSekolah','$kelas','$jalurMasuk','$tahunAjaran', '$tahunLulus','$createdAt', '$updatedAt')";
+        $sql = "INSERT INTO " . $this->table . " VALUES ('$idSurvey', '$nim', '$tahun', '$createdAt', '$updatedAt')";
         // dd($sql);
 
         try {
             $data = $this->conn->prepare($sql);
             $data->execute();
 
-            return $nim;
+            return $idSurvey;
         } catch (PDOException $e) {
             echo $e;
             die();
@@ -162,23 +154,6 @@ class BasisDataMahasiswa extends GlobalFunc
             $query = $this->conn->prepare($sql);
             $query->execute();
             $data = $query->fetch();
-
-            return $data;
-        } catch (PDOException $e) {
-            echo $e;
-            die();
-        }
-    }
-
-    public function selectAllTahun()
-    {
-        $sql = "SELECT * FROM " . $this->table . " GROUP BY tahunAjaran ";
-        // dd($sql);
-
-        try {
-            $query = $this->conn->prepare($sql);
-            $query->execute();
-            $data = $query->fetchAll();
 
             return $data;
         } catch (PDOException $e) {

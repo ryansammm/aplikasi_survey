@@ -14,7 +14,7 @@
             <div class="col-lg-4 col-sm-6 sm-mb-30">
                 <div class="team team-round">
                     <div class="team-photo">
-                        <img class="img-fluid mx-auto" src="assets/mhs/images/team/01.jpg" alt="">
+                        <img class="img-fluid mx-auto" src="/assets/images/ANKI.jpeg" alt="">
                     </div>
                     <div class="team-description">
                         <div class="team-info">
@@ -26,7 +26,7 @@
             <div class="col-lg-4 col-sm-6 sm-mb-30">
                 <div class="team team-round">
                     <div class="team-photo">
-                        <img class="img-fluid mx-auto" src="assets/mhs/images/team/01.jpg" alt="">
+                        <img class="img-fluid mx-auto" src="/assets/images/PMIP.jpeg" alt="">
                     </div>
                     <div class="team-description">
                         <div class="team-info">
@@ -38,7 +38,7 @@
             <div class="col-lg-4 col-sm-6 sm-mb-30">
                 <div class="team team-round">
                     <div class="team-photo">
-                        <img class="img-fluid mx-auto" src="assets/mhs/images/team/01.jpg" alt="">
+                        <img class="img-fluid mx-auto" src="/assets/images/PLI.jpeg" alt="">
                     </div>
                     <div class="team-description">
                         <div class="team-info">
@@ -53,7 +53,7 @@
 
 <footer class="footer page-section-pt black-bg">
     <div class="container">
-        <div class="footer-widget mt-20">
+        <div class="footer-widget mt-80">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <p class="mt-15"> &copy;Copyright <span id="copyright">
@@ -90,18 +90,20 @@
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <!-- <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5> -->
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Silahkan isikan NIM sebelum mengisi survey
-                <input class="form-control" type="text" placeholder="NIM" aria-label="NIM">
-            </div>
-            <div class="modal-footer align-content-center">
-                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                <a href="/kuesioner" type="button" class="btn btn-primary">Confirm</a>
-            </div>
+            <form action="/survey/nim" method="post">
+                <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5> -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Silahkan isikan NIM sebelum mengisi survey
+                    <input class="form-control" name="nim" type="text" placeholder="NIM" aria-label="NIM">
+                </div>
+                <div class="modal-footer align-content-center">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

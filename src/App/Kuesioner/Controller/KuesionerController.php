@@ -3,6 +3,7 @@
 namespace App\Kuesioner\Controller;
 
 use App\BasisDataMahasiswa\Model\BasisDataMahasiswa;
+use App\HasilSurvey\Model\HasilSurvey;
 use App\Kuesioner\Model\Kuesioner;
 use App\ProgramStudi\Model\ProgramStudi;
 use Core\GlobalFunc;
@@ -24,20 +25,22 @@ class KuesionerController extends GlobalFunc
     public function index(Request $request)
     {
         $datas = $this->model->selectAll();
+        $id = $request->attributes->get('id');
+        // dd($id);
 
-        foreach ($datas as $key => $value) {
-            if ($value['programStudi'] == '1') {
-                $datas[$key]['jurusan'] = 'Analisis Kimia';
-            } else if ($value['programStudi'] == '2') {
-                $datas[$key]['jurusan'] = 'Penjaminan Mutu Industri Pangan';
-            } else if ($value['programStudi'] == '3') {
-                $datas[$key]['jurusan'] = 'Pengolahan Limbah Industri';
-            }
-        }
+        // foreach ($datas as $key => $value) {
+        //     if ($value['programStudi'] == '1') {
+        //         $datas[$key]['jurusan'] = 'Analisis Kimia';
+        //     } else if ($value['programStudi'] == '2') {
+        //         $datas[$key]['jurusan'] = 'Penjaminan Mutu Industri Pangan';
+        //     } else if ($value['programStudi'] == '3') {
+        //         $datas[$key]['jurusan'] = 'Pengolahan Limbah Industri';
+        //     }
+        // }
 
         // dd($datas);
 
-        return $this->render_template('mhs/kuesioner/index', ['datas' => $datas]);
+        return $this->render_template('mhs/kuesioner/index', ['datas' => $datas, 'id' => $id]);
     }
 
 
@@ -51,9 +54,25 @@ class KuesionerController extends GlobalFunc
     public function store(Request $request)
     {
         $datas = $request->request->all();
-        dd($datas);
+        $id = $request->attributes->get('id');
+        // dd($datas);
 
-        $data_mhs_create = $this->model->create($datas);
+        $hasil_survey = new HasilSurvey();
+
+        $hasil_survey_create = $hasil_survey->create([
+            'nim' => $id,
+        ]);
+
+        foreach ($datas as $key => $value) {
+            if ($value != '') {
+
+                $jawaban_create = $this->model->create([
+                    'idSurvey' => $hasil_survey_create,
+                    'idPertanyaan' => $key,
+                    'jawaban' => $value,
+                ]);
+            }
+        }
 
         return new RedirectResponse('/survey');
     }

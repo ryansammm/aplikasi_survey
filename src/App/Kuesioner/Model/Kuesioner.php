@@ -51,13 +51,14 @@ class Kuesioner extends GlobalFunc
     public function create($datas)
     {
         $idJawaban = uniqid('id');
+        $idSurvey = $datas['idSurvey'];
         $idPertanyaan = $datas['idPertanyaan'];
         $jawaban = $datas['jawaban'];
-        $jenisJawaban = $datas['jenisJawaban'];
+        $jenisJawaban = NUll;
         $createdAt = date('Y-m-d H:i:s');
         $updatedAt = date('Y-m-d H:i:s');
 
-        $sql = "INSERT INTO " . $this->table . " VALUES ('$idJawaban', '$idPertanyaan', '$jawaban', '$jenisJawaban','$createdAt', '$updatedAt')";
+        $sql = "INSERT INTO " . $this->table . " VALUES ('$idJawaban','$idSurvey' ,'$idPertanyaan', '$jawaban', '$jenisJawaban','$createdAt', '$updatedAt')";
         // dd($sql);
 
         try {
@@ -122,6 +123,23 @@ class Kuesioner extends GlobalFunc
             return $query;
         } catch (PDOException $e) {
             dump($e);
+            die();
+        }
+    }
+
+    public function countRows($where = "")
+    {
+        $sql = "SELECT COUNT(" . $this->primaryKey . ") as count FROM " . $this->table . " LEFT JOIN hasil_survey ON hasil_survey.idSurvey = jawaban.idSurvey LEFT JOIN mahasiswa ON mahasiswa.nim = hasil_survey.nim  " . $where;
+        // dd($sql);
+
+        try {
+            $query = $this->conn->prepare($sql);
+            $query->execute();
+            $data = $query->fetch();
+
+            return $data;
+        } catch (PDOException $e) {
+            echo $e;
             die();
         }
     }

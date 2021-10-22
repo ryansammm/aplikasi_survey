@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2021 at 08:56 AM
+-- Generation Time: Oct 21, 2021 at 06:12 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -24,17 +24,69 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hasil_survey`
+--
+
+CREATE TABLE `hasil_survey` (
+  `idSurvey` varchar(100) NOT NULL,
+  `nim` varchar(100) NOT NULL,
+  `tahun` varchar(100) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hasil_survey`
+--
+
+INSERT INTO `hasil_survey` (`idSurvey`, `nim`, `tahun`, `createdAt`, `updatedAt`) VALUES
+('id61714925add29', '1517229', '2021', '2021-10-21 06:04:05', '2021-10-21 06:04:05'),
+('id617149f149734', '1517235', '2021', '2021-10-21 06:07:29', '2021-10-21 06:07:29'),
+('id61714dd4c26cd', '1517232', '2021', '2021-10-21 06:24:04', '2021-10-21 06:24:04');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `jawaban`
 --
 
 CREATE TABLE `jawaban` (
   `idJawaban` varchar(100) NOT NULL,
+  `idSurvey` varchar(100) NOT NULL,
   `idPertanyaan` varchar(100) NOT NULL,
   `jawaban` varchar(255) NOT NULL,
-  `jenisJawaban` char(2) NOT NULL,
+  `jenisJawaban` char(2) DEFAULT NULL,
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `jawaban`
+--
+
+INSERT INTO `jawaban` (`idJawaban`, `idSurvey`, `idPertanyaan`, `jawaban`, `jenisJawaban`, `createdAt`, `updatedAt`) VALUES
+('id61714925aeee9', 'id61714925add29', 'email', 'ryan@mail.co', '', '2021-10-21 06:04:05', '2021-10-21 06:04:05'),
+('id61714925af586', 'id61714925add29', 'nama', 'Ryan', '', '2021-10-21 06:04:05', '2021-10-21 06:04:05'),
+('id61714925afbbe', 'id61714925add29', 'programStudi', 'D3 Analisis Kimia', '', '2021-10-21 06:04:05', '2021-10-21 06:04:05'),
+('id61714925b068a', 'id61714925add29', 'nim', '1517229', '', '2021-10-21 06:04:05', '2021-10-21 06:04:05'),
+('id61714925b0f70', 'id61714925add29', 'tahunLulus', '2021', '', '2021-10-21 06:04:05', '2021-10-21 06:04:05'),
+('id61714925b142d', 'id61714925add29', 'telepon', '089123421521', '', '2021-10-21 06:04:05', '2021-10-21 06:04:05'),
+('id61714925b1887', 'id61714925add29', 'b1', 'Tidak', '', '2021-10-21 06:04:05', '2021-10-21 06:04:05'),
+('id61714925b1cdd', 'id61714925add29', 'b3', 'Badan Usaha Milik Negara/ Daerah', '', '2021-10-21 06:04:05', '2021-10-21 06:04:05'),
+('id61714925b2185', 'id61714925add29', 'b28', '3 - 5jt', '', '2021-10-21 06:04:05', '2021-10-21 06:04:05'),
+('id61714925b25f1', 'id61714925add29', 'b29', '4-6 bulan setelah lulus kuliah', '', '2021-10-21 06:04:05', '2021-10-21 06:04:05'),
+('id61714925b2a68', 'id61714925add29', 'b43', 'Sesuai', '', '2021-10-21 06:04:05', '2021-10-21 06:04:05'),
+('id617149f149d9d', 'id617149f149734', 'email', 'dante@mail.com', '', '2021-10-21 06:07:29', '2021-10-21 06:07:29'),
+('id617149f14a686', 'id617149f149734', 'nama', 'Dante Iskandar', '', '2021-10-21 06:07:29', '2021-10-21 06:07:29'),
+('id617149f14af73', 'id617149f149734', 'programStudi', 'D3 Pengolahan Limbah Industri', '', '2021-10-21 06:07:29', '2021-10-21 06:07:29'),
+('id617149f14b4d8', 'id617149f149734', 'nim', '1517235', '', '2021-10-21 06:07:29', '2021-10-21 06:07:29'),
+('id617149f14be59', 'id617149f149734', 'tahunLulus', '2021', '', '2021-10-21 06:07:29', '2021-10-21 06:07:29'),
+('id617149f14c771', 'id617149f149734', 'telepon', '0891293923748', '', '2021-10-21 06:07:29', '2021-10-21 06:07:29'),
+('id617149f152d4a', 'id617149f149734', 'b1', 'Ya', '', '2021-10-21 06:07:29', '2021-10-21 06:07:29'),
+('id617149f1535ed', 'id617149f149734', 'b3', 'Perusahaan swasta dalam negeri', '', '2021-10-21 06:07:29', '2021-10-21 06:07:29'),
+('id617149f153d68', 'id617149f149734', 'b28', '5 - 10jt', '', '2021-10-21 06:07:29', '2021-10-21 06:07:29'),
+('id617149f154556', 'id617149f149734', 'b29', '0-3 bulan setelah lulus kuliah', '', '2021-10-21 06:07:29', '2021-10-21 06:07:29'),
+('id617149f154e30', 'id617149f149734', 'b43', 'Sangat sesuai', '', '2021-10-21 06:07:29', '2021-10-21 06:07:29');
 
 -- --------------------------------------------------------
 
@@ -1224,6 +1276,22 @@ INSERT INTO `mahasiswa` (`nim`, `namaMhs`, `tempatLahir`, `tglLahir`, `programSt
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `media`
+--
+
+CREATE TABLE `media` (
+  `idMedia` varchar(255) NOT NULL,
+  `pathMedia` varchar(255) NOT NULL,
+  `idRelation` varchar(255) NOT NULL,
+  `idEntity` varchar(255) NOT NULL,
+  `jenisdokumenMedia` varchar(255) NOT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pertanyaan`
 --
 
@@ -1403,6 +1471,12 @@ INSERT INTO `users` (`idUser`, `namaUser`, `username`, `password`, `createdAt`, 
 --
 
 --
+-- Indexes for table `hasil_survey`
+--
+ALTER TABLE `hasil_survey`
+  ADD PRIMARY KEY (`idSurvey`);
+
+--
 -- Indexes for table `jawaban`
 --
 ALTER TABLE `jawaban`
@@ -1413,6 +1487,12 @@ ALTER TABLE `jawaban`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`nim`);
+
+--
+-- Indexes for table `media`
+--
+ALTER TABLE `media`
+  ADD PRIMARY KEY (`idMedia`);
 
 --
 -- Indexes for table `pertanyaan`
